@@ -1,5 +1,5 @@
 # cil-nodejs-gql-1
-Codes in the first tutorial of "How to Implement GraphQL in Microservices Using Node.js" series in https://codingislivng.com
+The source code in the first tutorial of "How to Implement GraphQL in Microservices Using Node.js" series in https://codingisliving.com
 
 How to run:
 1. Run `npm i`.
