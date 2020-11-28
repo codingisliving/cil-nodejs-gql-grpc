@@ -1,0 +1,6 @@
+module.exports = `
+  type Bank {
+    id: ID
+    name: String
+  }
+`;

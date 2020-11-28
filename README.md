@@ -1,5 +1,5 @@
-# cli-nodejs-gql-1
-Codes in the first tutorial of "How to Implement GraphQL in Microservices Using Node.js" series in https://codingislivng.com
+# cli-nodejs-gql-2
+The source code in the second tutorial of "How to Implement GraphQL in Microservices Using Node.js" series in https://codingislivng.com
 
 How to run:
 1. Run `npm i`.

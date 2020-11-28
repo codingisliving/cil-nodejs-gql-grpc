@@ -1,9 +1,7 @@
 module.exports = `
   type Query {
     helloworld: HelloWorld
-  }
-
-  schema {
-    query: Query
+    banks: [Bank!]
+    bank(id: ID!): Bank
   }
 `;
