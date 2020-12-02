@@ -2,7 +2,7 @@ const { post, patch, remove } = require('../../../connectors/httpConnector');
 const baseUrl = 'http://localhost:4001';
 
 const Mutation = {
-    createBank: async (_, data) =>a {
+    createBank: async (_, data) => {
         return post(`${baseUrl}/banks`, data);
     },
     updateBank: async (_, data) => {
