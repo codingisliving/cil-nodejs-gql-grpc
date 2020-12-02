@@ -1,5 +1,7 @@
 module.exports = `
   type Mutation {
     createBank(name: String!): ID
+    updateBank(id: ID!, name: String): String
+    deleteBank(id: ID!): String
   }
 `;

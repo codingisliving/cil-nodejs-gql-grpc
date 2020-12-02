@@ -1,20 +1,15 @@
-const axios = require('axios');
+const { post, patch, remove } = require('../../../connectors/httpConnector');
 const baseUrl = 'http://localhost:4001';
 
-const post = async (url, data) => {
-    try {
-        const response = await axios.post(url, data);
-        return response.data;
-    } catch (error) {
-        console.error(error);
-        throw new Error(error);
-    }
-    return null;
-}
-
 const Mutation = {
-    createBank: async (_, data) => {
+    createBank: async (_, data) =>a {
         return post(`${baseUrl}/banks`, data);
+    },
+    updateBank: async (_, data) => {
+        return patch(`${baseUrl}/banks/${data.id}`, data);
+    },
+    deleteBank: async (_, data) => {
+        return remove(`${baseUrl}/banks/${data.id}`, data);
     }
 }
 
