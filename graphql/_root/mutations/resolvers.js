@@ -11,6 +11,6 @@ const Mutation = {
     deleteBank: async (_, data) => {
         return remove(`${baseUrl}/banks/${data.id}`, data);
     }
-}
+};
 
 module.exports = { Mutation };
