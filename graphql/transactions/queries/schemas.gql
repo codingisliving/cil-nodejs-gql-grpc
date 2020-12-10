@@ -1,0 +1,10 @@
+module.exports = `
+  type Transaction {
+    id: ID!
+    amount: String!
+    sender: User!
+    recipient: User!
+    status: String!
+    transactionDate: String!
+  }
+`;

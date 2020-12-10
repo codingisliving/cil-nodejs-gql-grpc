@@ -1,7 +1,23 @@
 module.exports = `
   type Mutation {
+    # Banks
     createBank(name: String!): ID
     updateBank(id: ID!, name: String): String
     deleteBank(id: ID!): String
+
+    # Users
+    createUser(name: String!, bankId: String!, amount: String!): ID
+    updateUser(id: ID!, name: String, bankId: String, amount: String): String
+    deleteUser(id: ID!): String
+
+    # Transactions
+    createTransaction(
+        amount: String!,
+        senderId: String!,
+        recipientId: String!): ID
+    updateTransaction(
+        id: ID!,
+        status: String!): String
+
   }
 `;

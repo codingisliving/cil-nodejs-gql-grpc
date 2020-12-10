@@ -1,0 +1,8 @@
+module.exports = `
+  type User {
+    id: ID!
+    name: String!
+    bank: Bank!
+    amount: String!
+  }
+`;
