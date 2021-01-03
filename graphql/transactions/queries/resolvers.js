@@ -1,9 +1,14 @@
-const { get } = require('../../../connectors/httpConnector');
-const baseUrl = 'http://localhost:4001';
+const { createGetUrl } = require('../../baseResolver');
 
 const Transaction = {
-    sender: async (transaction) => await get(`${baseUrl}/users/${transaction.senderId}`) || {},
-    recipient: async (transaction) => await get(`${baseUrl}/users/${transaction.recipientId}`) || {}
+    sender: async (transaction, _, context) => {
+        const getUser = createGetUrl('users');
+        return getUser(_, { id: transaction.senderId }, context);
+    },
+    recipient: async (transaction, _, context) => {
+        const getUser = createGetUrl('users');
+        return getUser(_, { id: transaction.recipientId }, context);
+    }
 };
 
 module.exports = { Transaction };

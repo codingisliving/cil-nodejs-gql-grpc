@@ -1,8 +1,10 @@
-const { get } = require('../../../connectors/httpConnector');
-const baseUrl = 'http://localhost:4001';
+const { createGetUrl } = require('../../baseResolver');
 
 const User = {
-    bank: async (user) => await get(`${baseUrl}/banks/${user.bankId}`) || {}
+    bank: async (user, _, context) => {
+        const getBank = createGetUrl('banks');
+        return getBank(_, { id: user.bankId }, context);
+    }
 };
 
 module.exports = { User };

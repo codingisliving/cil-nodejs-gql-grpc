@@ -1,14 +1,13 @@
-const { get } = require('../../../connectors/httpConnector');
-const baseUrl = 'http://localhost:4001';
+const { createGetUrl, createGetListUrl } = require('../../baseResolver');
 
 const Query = {
     helloworld: () => 'helloworld',
-    banks: async () => await get(`${baseUrl}/banks`) || [],
-    bank: async (_, params) => await get(`${baseUrl}/banks/${params.id}`) || {},
-    users: async () => await get(`${baseUrl}/users`) || [],
-    user: async (_, params) => await get(`${baseUrl}/users/${params.id}`) || {},
-    transactions: async () => await get(`${baseUrl}/transactions`) || [],
-    transaction: async (_, params) => await get(`${baseUrl}/transactions/${params.id}`) || {},
+    banks: createGetListUrl(`banks`),
+    bank: createGetUrl(`banks`),
+    users: createGetListUrl(`users`),
+    user: createGetUrl(`users`),
+    transactions: createGetListUrl(`transactions`),
+    transaction: createGetUrl(`transactions`),
 };
 
 

@@ -1,0 +1,7 @@
+module.exports = `
+  type AdminLogin {
+    status: String!
+    message: String
+    token: String!
+  }
+`;

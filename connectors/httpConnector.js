@@ -1,8 +1,8 @@
 const axios = require('axios');
 
-const get = async (url) => {
+const get = async (url, headers = {}) => {
     try {
-        const response = await axios.get(url);
+        const response = await axios.get(url, headers);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -11,9 +11,9 @@ const get = async (url) => {
     return null;
 }
 
-const post = async (url, data) => {
+const post = async (url, data, headers = {}) => {
     try {
-        const response = await axios.post(url, data);
+        const response = await axios.post(url, data, headers);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -22,9 +22,9 @@ const post = async (url, data) => {
     return null;
 }
 
-const patch = async (url, data) => {
+const patch = async (url, data, headers = {}) => {
     try {
-        const response = await axios.patch(url, data);
+        const response = await axios.patch(url, data, headers);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -33,9 +33,9 @@ const patch = async (url, data) => {
     return null;
 }
 
-const remove = async (url, data) => {
+const remove = async (url, headers = {}) => {
     try {
-        const response = await axios.delete(url, data);
+        const response = await axios.delete(url, headers);
         return response.data;
     } catch (error) {
         console.error(error);

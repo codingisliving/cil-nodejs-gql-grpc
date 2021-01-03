@@ -4,13 +4,15 @@ const helloworld = require('./helloworld');
 const banks = require('./banks');
 const users = require('./users');
 const transactions = require('./transactions');
+const admin = require('./admin');
 
 const typeDefs = gql`${[
     root.schemas,
     helloworld.schemas,
     banks.schemas,
     users.schemas,
-    transactions.schemas
+    transactions.schemas,
+    admin.schemas
 ].reduce((acc, schemas) => { return acc + schemas })}`;
 
 const resolvers = {
@@ -18,10 +20,16 @@ const resolvers = {
     ...helloworld.resolvers,
     ...banks.resolvers,
     ...users.resolvers,
-    ...transactions.resolvers
+    ...transactions.resolvers,
+    ...admin.resolvers
+};
+
+const context = ({ req }) => {
+    return { headers: req.headers };
 };
 
 module.exports = {
     typeDefs,
-    resolvers
+    resolvers,
+    context
 };

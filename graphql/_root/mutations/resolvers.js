@@ -1,43 +1,33 @@
-const { post, patch, remove } = require('../../../connectors/httpConnector');
-const baseUrl = 'http://localhost:4001';
+const { baseUrl, createPostUrl, createPatchUrl, createDeleteUrl, post } = require('../../baseResolver');
 
 const banks = {
-    createBank: async (_, data) => {
-        return post(`${baseUrl}/banks`, data);
-    },
-    updateBank: async (_, data) => {
-        return patch(`${baseUrl}/banks/${data.id}`, data);
-    },
-    deleteBank: async (_, data) => {
-        return remove(`${baseUrl}/banks/${data.id}`, data);
-    }
+    createBank: createPostUrl('banks'),
+    updateBank: createPatchUrl('banks'),
+    deleteBank: createDeleteUrl('banks')
 };
 
 const users = {
-    createUser: async (_, data) => {
-        return post(`${baseUrl}/users`, data);
-    },
-    updateUser: async (_, data) => {
-        return patch(`${baseUrl}/users/${data.id}`, data);
-    },
-    deleteUser: async (_, data) => {
-        return remove(`${baseUrl}/users/${data.id}`, data);
-    }
+    createUser: createPostUrl('users'),
+    updateUser: createPatchUrl('users'),
+    deleteUser: createDeleteUrl('users')
 };
 
 const transactions = {
-    createTransaction: async (_, data) => {
-        return post(`${baseUrl}/transactions`, data);
-    },
-    updateTransaction: async (_, data) => {
-        return patch(`${baseUrl}/transactions/${data.id}`, data);
+    createTransaction: createPostUrl('transactions'),
+    updateTransaction: createPatchUrl('transactions')
+}
+
+const admin = {
+    login: async (_, data) => {
+        return post(`${baseUrl}/admin/login`, data);
     }
 }
 
 const Mutation = {
     ...banks,
     ...users,
-    ...transactions
+    ...transactions,
+    ...admin
 };
 
 module.exports = { Mutation };
