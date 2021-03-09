@@ -24,12 +24,7 @@ const resolvers = {
     ...admin.resolvers
 };
 
-const context = ({ req }) => {
-    return { headers: req.headers };
-};
-
 module.exports = {
     typeDefs,
-    resolvers,
-    context
+    resolvers
 };

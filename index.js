@@ -1,8 +1,19 @@
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 const graphql = require('./graphql')
+const grpc = require('./grpc');
 
-const server = new ApolloServer(graphql);
+const context = ({ req }) => {
+    return {
+        headers: req.headers,
+        grpc
+    };
+};
+
+const server = new ApolloServer({
+    ...graphql,
+    context
+});
 
 const app = express();
 server.applyMiddleware({ app });

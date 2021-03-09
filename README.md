@@ -1,5 +1,5 @@
-# cli-nodejs-gql-4
-The source code in the fourth tutorial of "How to Implement GraphQL in Microservices Using Node.js" series in https://codingisliving.com
+# cli-nodejs-gql-grpc
+The source code in the post "Set GraphQL Server as gRPC Client" in https://codingisliving.com
 
 How to run:
 1. Run `npm i`.
