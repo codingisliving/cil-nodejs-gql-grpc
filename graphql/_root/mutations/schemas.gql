@@ -18,8 +18,5 @@ module.exports = `
     updateTransaction(
         id: ID!,
         status: String!): String
-
-    # Login
-    login(username: String!, password: String!): AdminLogin
   }
 `;

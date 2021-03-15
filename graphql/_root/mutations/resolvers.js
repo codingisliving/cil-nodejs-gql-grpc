@@ -1,33 +1,43 @@
-const { baseUrl, createPostUrl, createPatchUrl, createDeleteUrl, post } = require('../../baseResolver');
+const { baseUrl, createPostUrl, createPatchUrl, createDeleteUrl, createRPC } = require('../../baseResolver');
 
 const banks = {
-    createBank: createPostUrl('banks'),
-    updateBank: createPatchUrl('banks'),
-    deleteBank: createDeleteUrl('banks')
+    // EXPRESS
+    // createBank: createPostUrl('banks'),
+    // updateBank: createPatchUrl('banks'),
+    // deleteBank: createDeleteUrl('banks')
+
+    // gRPC
+    createBank: createRPC('banks', 'createBank', 'id'),
+    updateBank: createRPC('banks', 'updateBank', 'message'),
+    deleteBank: createRPC('banks', 'deleteBank', 'message')
 };
 
 const users = {
-    createUser: createPostUrl('users'),
-    updateUser: createPatchUrl('users'),
-    deleteUser: createDeleteUrl('users')
+    // EXPRESS
+    // createUser: createPostUrl('users'),
+    // updateUser: createPatchUrl('users'),
+    // deleteUser: createDeleteUrl('users')
+
+    // gRPC
+    createUser: createRPC('users', 'createUser', 'id'),
+    updateUser: createRPC('users', 'updateUser', 'message'),
+    deleteUser: createRPC('users', 'deleteUser', 'message')
 };
 
 const transactions = {
-    createTransaction: createPostUrl('transactions'),
-    updateTransaction: createPatchUrl('transactions')
-}
+    // EXPRESS
+    // createTransaction: createPostUrl('transactions'),
+    // updateTransaction: createPatchUrl('transactions')
 
-const admin = {
-    login: async (_, data) => {
-        return post(`${baseUrl}/admin/login`, data);
-    }
+    // gRPC
+    createTransaction: createRPC('transactions', 'createTransaction', 'id'),
+    updateTransaction: createRPC('transactions', 'updateTransaction', 'message')
 }
 
 const Mutation = {
     ...banks,
     ...users,
-    ...transactions,
-    ...admin
+    ...transactions
 };
 
 module.exports = { Mutation };

@@ -36,6 +36,24 @@ const createGetUrl = (url, emptyValue = {}) => {
     }
 };
 
+const createRPC = (serviceName, rpcName, targetPropName = '') => {
+  return async (_, data, context) => {
+    const { grpc: { client } } = context;
+    const rpcClient = client[`${serviceName}`];
+
+    return new Promise((resolve) => {
+      rpcClient[`${rpcName}`](data, (err, response) => {
+        if (targetPropName) {
+          resolve(err || response[`${targetPropName}`]);
+        }
+        else {
+          resolve(err || response);
+        }
+      });
+    });
+  }
+};
+
 module.exports = {
     baseUrl,
     post,
@@ -43,5 +61,6 @@ module.exports = {
     createPatchUrl,
     createDeleteUrl,
     createGetListUrl,
-    createGetUrl
+    createGetUrl,
+    createRPC
 }
